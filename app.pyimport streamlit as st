@@ -1,0 +1,30 @@
+import streamlit as st
+import json
+
+# Load emission factors
+with open("emission_factors.json", "r") as f:
+    factors = json.load(f)
+
+st.title("GHG Emissions Calculator (Scope 1 & 2)")
+
+# Select Scope
+scope = st.selectbox("Select Emission Scope", ["Scope 1", "Scope 2"])
+
+# Get corresponding activities
+activities = factors["scope_1"] if scope == "Scope 1" else 
+factors["scope_2"]
+
+# Select activity type
+activity_type = st.selectbox("Select Activity Type", 
+list(activities.keys()))
+
+# Enter activity data
+quantity = st.number_input(f"Enter quantity 
+({activity_type.split('(')[-1][:-1]})", min_value=0.0)
+
+# Calculate emissions
+if quantity > 0:
+    emission_factor = activities[activity_type]
+    emissions = quantity * emission_factor
+    st.success(f"Estimated Emissions: **{emissions:.2f} kg CO₂**")
+

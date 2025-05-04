@@ -1,0 +1,29 @@
+{
+  "scope_1": {
+    "Stationary Combustion": {
+      "Diesel (litres)": 2.68,
+      "Petrol (litres)": 2.31,
+      "LPG (kg)": 2.98,
+      "Furnace Oil (litres)": 3.13,
+      "Natural Gas (m³)": 1.90,
+      "Coal (kg)": 2.42,
+      "Kerosene (litres)": 2.39
+    },
+    "Mobile Combustion": {
+      "Diesel (litres)": 2.68,
+      "Petrol (litres)": 2.31,
+      "CNG (kg)": 2.75,
+      "LPG (kg)": 2.98
+    },
+    "Fugitive Emissions": {
+      "R-22 (kg)": 1810,
+      "R-134a (kg)": 1430,
+      "R-410A (kg)": 2088,
+      "R-404A (kg)": 3922
+    }
+  },
+  "scope_2": {
+    "Electricity (kWh)": 0.92
+  }
+}
+
