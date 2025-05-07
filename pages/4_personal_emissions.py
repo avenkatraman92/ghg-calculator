@@ -147,7 +147,7 @@ st.subheader("🌳 Tree Offset Calculator")
 # Calculate number of trees needed to offset emissions
 trees_needed = total_emissions / (25 * 25)  # 25kg CO₂ per tree per year, tree lifetime 25 years
 
-st.markdown(f"<h2 style='font-size: 36px; text-align: center;'>You need to plant <strong>{int(trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
+st.markdown(f"<h2 style='font-size: 60px; text-align: center;'>You need to plant <strong>{int(trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
 
     # Tree offset calculator
     st.subheader("🌳 Tree Offset Calculator")
