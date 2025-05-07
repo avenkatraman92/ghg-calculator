@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Set the page config (Optional)
 st.set_page_config(page_title="Individual Emissions Calculator", page_icon="🌍")
