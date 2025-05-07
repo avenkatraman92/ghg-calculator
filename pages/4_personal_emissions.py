@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import matplotlib.pyplot as plt
 import pandas as pd
+import plotly.express as px
 
 # Set the page config (Optional)
 st.set_page_config(page_title="Individual Emissions Calculator", page_icon="🌍")
@@ -130,15 +131,23 @@ if st.session_state.individual_items:
 
     # Aggregate emissions by category (since there can be multiple entries for the same category)
     df = pd.DataFrame(st.session_state.individual_items)
-    category_totals = df.groupby("Category")["Emissions (kg CO₂e)"].sum()
+    category_totals = df.groupby("Category")["Emissions (kg CO₂e)"].sum().reset_index()
 
-    # Create the bar chart
-    fig, ax = plt.subplots()
-    ax.bar(category_totals.index, category_totals.values, color='skyblue')
-    ax.set_ylabel("Emissions (kg CO₂e)")
-    ax.set_title("Emissions by Category")
-    plt.xticks(rotation=45)
-    st.pyplot(fig)
+    # Create the bar chart using Plotly
+    fig = px.bar(category_totals, x="Category", y="Emissions (kg CO₂e)", 
+                title="Emissions Breakdown by Category", 
+                labels={"Emissions (kg CO₂e)": "Emissions (kg CO₂e)"})
+
+    # Display the Plotly chart
+    st.plotly_chart(fig)
+
+# Tree offset calculator
+st.subheader("🌳 Tree Offset Calculator")
+
+# Calculate number of trees needed to offset emissions
+trees_needed = total_emissions / (25 * 25)  # 25kg CO₂ per tree per year, tree lifetime 25 years
+
+st.markdown(f"<h2 style='font-size: 36px; text-align: center;'>You need to plant <strong>{int(trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
 
     # Tree offset calculator
     st.subheader("🌳 Tree Offset Calculator")
