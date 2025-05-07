@@ -3,6 +3,25 @@ import json
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
+# Set a custom title for the app
+st.set_page_config(page_title="GHG Emissions Calculator", page_icon="🌍")
+
+# Sidebar title
+st.sidebar.title("GHG Emissions Calculator")
+
+# Sidebar navigation
+page = st.sidebar.radio("Select a page", ("Scope 1 & 2", "Scope 3"))
+
+# Main page content based on sidebar selection
+if page == "Scope 1 & 2":
+    st.title("Scope 1 & 2 GHG Emissions")
+    # Your existing scope 1 & 2 code goes here
+elif page == "Scope 3":
+    st.title("Scope 3 GHG Emissions")
+    # Your existing scope 3 code goes here
+
+
 # Load emission factors
 with open("emission_factors.json", "r") as f:
     factors = json.load(f)

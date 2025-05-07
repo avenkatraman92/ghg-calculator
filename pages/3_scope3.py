@@ -3,6 +3,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import json
 
+# Sidebar title
+st.sidebar.title("Scope 3 Emissions")
+
+# Load the emission factors
+with open('scope3_emission_factors.json') as f:
+    emission_factors = json.load(f)
+
+# Your existing code to display Scope 3, add categories, and visualize emissions
+st.title("Scope 3: GHG Emissions by Category")
+
+
 st.set_page_config(page_title="Scope 3 Emissions", layout="wide")
 
 st.title("Scope 3 Emissions Calculator")
