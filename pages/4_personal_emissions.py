@@ -151,7 +151,7 @@ st.markdown(f"<h2 style='font-size: 60px; text-align: center;'>You need to plant
 
   # Tree offset calculator
 st.subheader("🌳 Tree Offset Calculator")
-emissions_per_year = total_emissions
+emissions_per_year = (total_emissions + 0.1)
 emissions_offset_per_tree_per_year = 25
 lifetime_offset_per_tree = emissions_offset_per_tree_per_year * 25  # 625 kg CO₂e
 
