@@ -155,4 +155,4 @@ lifetime_trees_needed = emissions_per_year / lifetime_offset_per_tree
 st.markdown(f"To offset **{emissions_per_year:.2f} kg CO₂e** annually:")
 st.markdown(f"- Below is the number of trees you need to plant once** (to offset over their 25-year lifetime). This means you have to plant and maintain the trees for a 25-year period.")
 
-st.markdown(f"<h2 style='font-size: 60px; text-align: center;'>You need to plant <strong>{int(trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
+st.markdown(f"<h2 style='font-size: 60px; text-align: center;'>You need to plant <strong>{int(lifetime_trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
