@@ -77,9 +77,9 @@ with st.form("delivery_form", clear_on_submit=True):
 # 4. Clothes Module
 st.subheader("4. Clothes Emissions")
 with st.form("clothes_form", clear_on_submit=True):
-    topwear = st.number_input("Topwear items bought per month", min_value=0, step=1)
-    bottomwear = st.number_input("Bottomwear items bought per month", min_value=0, step=1)
-    outerwear = st.number_input("Outerwear items bought per month", min_value=0, step=1)
+    topwear = st.number_input("Topwear items bought per month", min_value=0, step=0.1)
+    bottomwear = st.number_input("Bottomwear items bought per month", min_value=0, step=0.1)
+    outerwear = st.number_input("Outerwear items bought per month", min_value=0, step=0.1)
 
     submitted = st.form_submit_button("Add Clothes Emissions")
     if submitted:
@@ -124,15 +124,19 @@ else:
 
 # Pie chart visualization
 if st.session_state.individual_items:
-    st.subheader("Emissions Breakdown by Category (Pie Chart)")
 
-    categories = [item["Category"] for item in st.session_state.individual_items]
-    emissions_values = [item["Emissions (kg CO₂e)"] for item in st.session_state.individual_items]
+    st.subheader("Emissions Breakdown by Category (Bar Chart)")
 
+    # Aggregate emissions by category (since there can be multiple entries for the same category)
+    df = pd.DataFrame(st.session_state.individual_items)
+    category_totals = df.groupby("Category")["Emissions (kg CO₂e)"].sum()
+
+    # Create the bar chart
     fig, ax = plt.subplots()
-    ax.pie(emissions_values, labels=categories, autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-
+    ax.bar(category_totals.index, category_totals.values, color='skyblue')
+    ax.set_ylabel("Emissions (kg CO₂e)")
+    ax.set_title("Emissions by Category")
+    plt.xticks(rotation=45)
     st.pyplot(fig)
 
     # Tree offset calculator
@@ -145,5 +149,4 @@ if st.session_state.individual_items:
     lifetime_trees_needed = emissions_per_year / lifetime_offset_per_tree
 
     st.markdown(f"To offset **{emissions_per_year:.2f} kg CO₂e** annually:")
-    st.markdown(f"- You need to plant **{trees_needed:.1f} trees per year** (assuming each tree offsets 25 kg/year).")
-    st.markdown(f"- Or plant **{lifetime_trees_needed:.1f} trees once** (to offset over their 25-year lifetime).")
+    st.markdown(f"- You needto plant **{lifetime_trees_needed:.1f} trees once** (to offset over their 25-year lifetime). Which means you have to plant and maintain the trees for a 25 year period")
