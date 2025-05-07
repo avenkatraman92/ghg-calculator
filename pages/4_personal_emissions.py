@@ -145,7 +145,7 @@ if st.session_state.individual_items:
 st.subheader("🌳 Tree Offset Calculator")
 
   # Tree offset calculator
-emissions_per_year = (total_emissions + 0.1)
+emissions_per_year = total_emissions
 emissions_offset_per_tree_per_year = 25
 lifetime_offset_per_tree = emissions_offset_per_tree_per_year * 25  # 625 kg CO₂e
 # Check if emissions are positive to avoid division by zero or negative values
