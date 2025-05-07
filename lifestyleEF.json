@@ -1,0 +1,25 @@
+{
+  "Transportation": {
+    "Air travel": 0.15,
+    "Train travel": 0.05,
+    "Bus": 0.1,
+    "Car": 0.21,
+    "Bike": 0.0
+  },
+  "Power Consumption": {
+    "Electricity": 0.8
+  },
+  "Amazon/Flipkart Delivery": {
+    "Package": 0.5
+  },
+  "Clothes": {
+    "Topwear": 3.0,
+    "Bottomwear": 2.5,
+    "Outerwear": 5.0
+  },
+  "Food": {
+    "Home-cooked": 0.5,
+    "Ordered": 1.0
+  }
+}
+
