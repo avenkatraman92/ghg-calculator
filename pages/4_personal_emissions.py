@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+import matplotlib.pyplot as plt
 
 # Set the page config (Optional)
 st.set_page_config(page_title="Individual Emissions Calculator", page_icon="🌍")
@@ -119,3 +120,30 @@ if st.session_state.individual_items:
     st.success(f"**Total Individual Emissions: {total_emissions:.2f} kg CO₂e**")
 else:
     st.info("No emissions data added yet.")
+
+
+# Pie chart visualization
+if st.session_state.individual_items:
+    st.subheader("Emissions Breakdown by Category (Pie Chart)")
+
+    categories = [item["Category"] for item in st.session_state.individual_items]
+    emissions_values = [item["Emissions (kg CO₂e)"] for item in st.session_state.individual_items]
+
+    fig, ax = plt.subplots()
+    ax.pie(emissions_values, labels=categories, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+    st.pyplot(fig)
+
+    # Tree offset calculator
+    st.subheader("🌳 Tree Offset Calculator")
+    emissions_per_year = total_emissions
+    emissions_offset_per_tree_per_year = 25
+    lifetime_offset_per_tree = emissions_offset_per_tree_per_year * 25  # 625 kg CO₂e
+
+    trees_needed = emissions_per_year / emissions_offset_per_tree_per_year
+    lifetime_trees_needed = emissions_per_year / lifetime_offset_per_tree
+
+    st.markdown(f"To offset **{emissions_per_year:.2f} kg CO₂e** annually:")
+    st.markdown(f"- You need to plant **{trees_needed:.1f} trees per year** (assuming each tree offsets 25 kg/year).")
+    st.markdown(f"- Or plant **{lifetime_trees_needed:.1f} trees once** (to offset over their 25-year lifetime).")
