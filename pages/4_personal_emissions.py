@@ -77,9 +77,9 @@ with st.form("delivery_form", clear_on_submit=True):
 # 4. Clothes Module
 st.subheader("4. Clothes Emissions")
 with st.form("clothes_form", clear_on_submit=True):
-    topwear = st.number_input("Topwear items bought per month", min_value=0, step=0.1)
-    bottomwear = st.number_input("Bottomwear items bought per month", min_value=0, step=0.1)
-    outerwear = st.number_input("Outerwear items bought per month", min_value=0, step=0.1)
+    topwear = st.number_input("Topwear items bought per year", min_value=0, step=1)
+    bottomwear = st.number_input("Bottomwear items bought per year", min_value=0, step=1)
+    outerwear = st.number_input("Outerwear items bought per year", min_value=0, step=1)
 
     submitted = st.form_submit_button("Add Clothes Emissions")
     if submitted:
