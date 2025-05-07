@@ -144,23 +144,17 @@ if st.session_state.individual_items:
 # Tree offset calculator
 st.subheader("🌳 Tree Offset Calculator")
 
-# Calculate number of trees needed to offset emissions
-trees_needed = total_emissions / (25 * 25)  # 25kg CO₂ per tree per year, tree lifetime 25 years
-
-st.markdown(f"<h2 style='font-size: 60px; text-align: center;'>You need to plant <strong>{int(trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
-
   # Tree offset calculator
-st.subheader("🌳 Tree Offset Calculator")
 emissions_per_year = (total_emissions + 0.1)
 emissions_offset_per_tree_per_year = 25
 lifetime_offset_per_tree = emissions_offset_per_tree_per_year * 25  # 625 kg CO₂e
-
 # Check if emissions are positive to avoid division by zero or negative values
 if emissions_per_year > 0:
     trees_needed = emissions_per_year / emissions_offset_per_tree_per_year
     lifetime_trees_needed = emissions_per_year / lifetime_offset_per_tree
 
     st.markdown(f"To offset **{emissions_per_year:.2f} kg CO₂e** annually:")
-    st.markdown(f"- You need to plant **{lifetime_trees_needed:.1f} trees once** (to offset over their 25-year lifetime). This means you have to plant and maintain the trees for a 25-year period.")
+    st.markdown(f"- Below is the number of trees you need to plant once** (to offset over their 25-year lifetime). This means you have to plant and maintain the trees for a 25-year period.")
 else:
     st.markdown("No emissions data available to calculate tree offset.")
+st.markdown(f"<h2 style='font-size: 60px; text-align: center;'>You need to plant <strong>{int(trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
