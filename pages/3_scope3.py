@@ -13,9 +13,6 @@ with open('scope3_emission_factors.json') as f:
 # Your existing code to display Scope 3, add categories, and visualize emissions
 st.title("Scope 3: GHG Emissions by Category")
 
-
-st.set_page_config(page_title="Scope 3 Emissions", layout="wide")
-
 st.title("Scope 3 Emissions Calculator")
 
 # Load emission factors from scope3_emission_factors.json
