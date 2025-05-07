@@ -131,7 +131,7 @@ if scope_2_data:
     grid = sum([a['quantity'] for a in scope_2_data if "renewable" not in a['activity_type'].lower()])
     
     fig2, ax2 = plt.subplots()
-    ax2.bar(["Grid Electricity", "Renewable Energy"], [grid, re], color=["orange", "green"])
+    ax2.bar(["Grid Electricity", "Renewable Energy"], [grid, re], color=["green", "orange"])
     ax2.set_ylabel("kWh")
     st.pyplot(fig2)
 
