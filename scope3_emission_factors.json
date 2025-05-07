@@ -1,0 +1,23 @@
+{
+  "Business travel": {
+    "Air travel": 0.15,
+    "Train travel": 0.05,
+    "Car rental": 0.20
+  },
+  "Employee commuting": {
+    "Car": 0.21,
+    "Bus": 0.11,
+    "Bike": 0.0
+  },
+  "Purchased goods and services": {
+    "Office supplies": 2.5,
+    "Electronics": 6.2,
+    "Furniture": 3.1
+  },
+  "Waste generated in operations": {
+    "Landfill": 0.9,
+    "Recycling": 0.2,
+    "Composting": 0.1
+  }
+}
+
