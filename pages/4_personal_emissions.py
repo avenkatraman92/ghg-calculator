@@ -145,16 +145,14 @@ if st.session_state.individual_items:
 st.subheader("🌳 Tree Offset Calculator")
 
   # Tree offset calculator
-emissions_per_year = total_emissions
+emissions_per_year = total_emissions 
 emissions_offset_per_tree_per_year = 25
 lifetime_offset_per_tree = emissions_offset_per_tree_per_year * 25  # 625 kg CO₂e
 # Check if emissions are positive to avoid division by zero or negative values
-if emissions_per_year > 0:
-    trees_needed = emissions_per_year / emissions_offset_per_tree_per_year
-    lifetime_trees_needed = emissions_per_year / lifetime_offset_per_tree
+trees_needed = emissions_per_year / emissions_offset_per_tree_per_year
+lifetime_trees_needed = emissions_per_year / lifetime_offset_per_tree
 
-    st.markdown(f"To offset **{emissions_per_year:.2f} kg CO₂e** annually:")
-    st.markdown(f"- Below is the number of trees you need to plant once** (to offset over their 25-year lifetime). This means you have to plant and maintain the trees for a 25-year period.")
-else:
-    st.markdown("No emissions data available to calculate tree offset.")
+st.markdown(f"To offset **{emissions_per_year:.2f} kg CO₂e** annually:")
+st.markdown(f"- Below is the number of trees you need to plant once** (to offset over their 25-year lifetime). This means you have to plant and maintain the trees for a 25-year period.")
+
 st.markdown(f"<h2 style='font-size: 60px; text-align: center;'>You need to plant <strong>{int(trees_needed)}</strong> trees per year to offset your emissions!</h2>", unsafe_allow_html=True)
